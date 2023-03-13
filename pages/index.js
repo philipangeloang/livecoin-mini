@@ -60,7 +60,7 @@ export default function Home({ prices }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const response = await fetch(
     "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Csolana%2Cbinancecoin&vs_currencies=usd%2Cphp%2Ceur&include_24hr_change=true"
   );
@@ -71,6 +71,5 @@ export async function getStaticProps() {
     props: {
       prices: data,
     },
-    revalidate: 2,
   };
 }
